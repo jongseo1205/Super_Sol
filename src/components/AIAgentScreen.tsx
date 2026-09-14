@@ -211,131 +211,119 @@ export default function AIAgentScreen({ context, onClose, onNavigate }: AIAgentS
   };
 
   const renderDepositComparison = () => (
-    <div className="w-full flex flex-col gap-3">
-      {/* Current Deposit */}
-      <div className="bg-gray-100/80 rounded-[20px] p-4 flex flex-col gap-1 border border-gray-200">
-        <span className="text-[13px] text-gray-500 font-bold mb-1">현재 예금</span>
-        <div className="flex justify-between items-end">
-          <span className="text-[20px] font-bold text-[#111] leading-none">3,000만원</span>
-          <span className="text-[20px] font-black text-gray-400 leading-none">연 3.1%</span>
-        </div>
-        <span className="text-[13px] text-gray-500 mt-1 font-medium">12개월 만기</span>
+    <div className="w-full bg-white border border-gray-200 rounded-[12px] flex flex-col overflow-hidden">
+      <div className="px-3 py-2 bg-gray-50 border-b border-gray-100">
+        <span className="text-[12px] font-bold text-gray-500">예금 3개를 비교했어요</span>
       </div>
 
-      <div className="flex items-center gap-3 my-1">
-        <div className="flex-1 h-px bg-gray-200"></div>
-        <span className="text-[12px] font-bold text-gray-400">대안 상품 비교</span>
-        <div className="flex-1 h-px bg-gray-200"></div>
-      </div>
-
-      {/* Prod A */}
-      <div className="bg-white rounded-[20px] p-4 border border-[#2B5DF9]/30 shadow-sm flex flex-col gap-3 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-1.5 h-full bg-[#2B5DF9]"></div>
-        <div className="flex justify-between items-center ml-1">
-          <span className="font-bold text-[#111] text-[16px]">SOL 정기예금</span>
-          <span className="font-black text-[#2B5DF9] text-[18px]">연 3.40%</span>
-        </div>
-        <div className="flex justify-between text-[14px] text-gray-500 ml-1">
-          <span className="font-medium">12개월</span>
-          <span>예상 세후이자 <span className="font-bold text-[#111]">약 86만원</span></span>
-        </div>
-      </div>
-      {/* Prod B */}
-      <div className="bg-white rounded-[20px] p-4 border border-gray-200 shadow-sm flex flex-col gap-3">
+      <div className="px-3 py-2.5 border-b border-gray-100 flex flex-col gap-0.5">
         <div className="flex justify-between items-center">
-          <span className="font-bold text-gray-700 text-[16px]">쏠편한 정기예금</span>
-          <span className="font-black text-gray-500 text-[18px]">연 3.32%</span>
+          <span className="text-[13px] font-bold text-[#111]">SOL 정기예금</span>
+          <span className="text-[14px] font-black text-[#2B5DF9]">연 3.40%</span>
         </div>
-        <div className="flex justify-between text-[14px] text-gray-500">
-          <span className="font-medium">6개월</span>
-          <span>예상 세후이자 <span className="font-bold text-gray-700">약 42만원</span></span>
+        <div className="flex justify-between items-center text-[12px] text-gray-500">
+          <span className="font-medium">12개월</span>
+          <span>예상 세후이자 약 86만원</span>
         </div>
       </div>
-      {/* Prod C */}
-      <div className="bg-[#F0F5FF] rounded-[20px] p-4 border border-[#2B5DF9]/30 shadow-sm flex flex-col gap-3 relative overflow-hidden">
-        <div className="absolute top-0 right-0 bg-[#2B5DF9] text-white text-[11px] font-bold px-2.5 py-1 rounded-bl-xl">최고금리</div>
-        <div className="flex justify-between items-center mt-2">
-          <span className="font-bold text-[#111] text-[16px]">특판 정기예금</span>
-          <span className="font-black text-[#2B5DF9] text-[18px]">연 3.55%</span>
+
+      <div className="px-3 py-2.5 border-b border-gray-100 flex flex-col gap-0.5">
+        <div className="flex justify-between items-center">
+          <span className="text-[13px] font-bold text-gray-700">쏠편한 정기예금</span>
+          <span className="text-[14px] font-black text-[#111]">연 3.32%</span>
         </div>
-        <div className="flex justify-between text-[14px] text-gray-500">
-          <span className="font-medium text-gray-600">12개월 (우대조건 필요)</span>
-          <span>예상 세후이자 <span className="font-bold text-[#111]">약 90만원</span></span>
+        <div className="flex justify-between items-center text-[12px] text-gray-500">
+          <span className="font-medium">6개월</span>
+          <span>예상 세후이자 약 42만원</span>
+        </div>
+      </div>
+
+      <div className="px-3 py-2.5 flex flex-col gap-0.5 relative">
+        <div className="flex justify-between items-center">
+          <div className="flex items-center gap-1.5">
+            <span className="text-[13px] font-bold text-[#111]">특판 정기예금</span>
+            <span className="px-1.5 py-0.5 bg-[#2B5DF9] text-white text-[10px] font-bold rounded">최고금리</span>
+          </div>
+          <span className="text-[14px] font-black text-[#2B5DF9]">연 3.55%</span>
+        </div>
+        <div className="flex justify-between items-center text-[12px] text-gray-500">
+          <span className="font-medium">12개월 (우대조건 필요)</span>
+          <span>예상 세후이자 약 90만원</span>
         </div>
       </div>
     </div>
   );
 
   const renderSpendingAnalysis = () => (
-    <div className="w-full flex flex-col gap-5 bg-white rounded-[24px] p-5 border border-gray-100 shadow-sm">
+    <div className="w-full flex flex-col gap-3 bg-white rounded-[12px] p-3.5 border border-gray-100 shadow-sm">
       <div className="flex flex-col gap-1">
-        <span className="text-[14px] text-gray-500 font-bold mb-1">외식비 증가 요인</span>
-        <div className="flex items-end gap-2">
-          <span className="text-[22px] font-black text-[#111] leading-none">평일 대비 주말 결제</span>
-          <span className="text-[22px] font-black text-orange-500 leading-none">82%</span>
+        <span className="text-[12px] text-gray-500 font-bold">외식비 증가 요인</span>
+        <div className="flex items-end gap-1.5">
+          <span className="text-[16px] font-black text-[#111] leading-none">평일 대비 주말 결제</span>
+          <span className="text-[16px] font-black text-orange-500 leading-none">82%</span>
         </div>
       </div>
       
-      <div className="flex flex-col gap-2.5 mt-2">
-        <div className="flex justify-between text-[13px] font-bold">
-          <span className="text-gray-500">결제 시간대 비중</span>
+      <div className="flex flex-col gap-2 mt-1">
+        <div className="flex justify-between text-[12px] font-bold text-gray-500">
+          <span>결제 시간대 비중</span>
         </div>
-        <div className="w-full h-3.5 bg-gray-100 rounded-full flex overflow-hidden">
+        <div className="w-full h-2.5 bg-gray-100 rounded-full flex overflow-hidden">
           <div className="h-full bg-orange-500 w-[65%]" title="18~22시"></div>
           <div className="h-full bg-orange-300 w-[25%]" title="12~14시"></div>
           <div className="h-full bg-gray-300 w-[10%]"></div>
         </div>
-        <div className="flex justify-between text-[12px] text-gray-500 font-medium mt-1">
-          <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded-full bg-orange-500"></div>저녁 (65%)</div>
-          <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded-full bg-orange-300"></div>점심 (25%)</div>
-          <div className="flex items-center gap-1.5"><div className="w-2.5 h-2.5 rounded-full bg-gray-300"></div>기타 (10%)</div>
+        <div className="flex justify-between text-[11px] text-gray-500 font-medium">
+          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-orange-500"></div>저녁 (65%)</div>
+          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-orange-300"></div>점심 (25%)</div>
+          <div className="flex items-center gap-1"><div className="w-2 h-2 rounded-full bg-gray-300"></div>기타 (10%)</div>
         </div>
       </div>
 
-      <div className="bg-orange-50/70 rounded-[16px] p-4 flex flex-col gap-1.5 mt-2 border border-orange-100/50">
-          <div className="flex items-center gap-1.5 mb-1">
-            <Sparkles className="w-4 h-4 text-orange-500" />
-            <span className="text-[13px] font-bold text-orange-600">AI 혜택 시뮬레이션</span>
+      <div className="bg-orange-50/70 rounded-[8px] p-2.5 flex flex-col gap-1 mt-1 border border-orange-100/50">
+          <div className="flex items-center gap-1">
+            <Sparkles className="w-3.5 h-3.5 text-orange-500" />
+            <span className="text-[12px] font-bold text-orange-600">AI 혜택 시뮬레이션</span>
           </div>
-          <span className="text-[14px] text-[#111] font-medium leading-relaxed">주말 외식 특화 카드로 결제했다면<br/>이번 달 <span className="font-bold text-orange-600">약 25,000원</span>을 아낄 수 있었어요.</span>
+          <span className="text-[13px] text-[#111] font-medium leading-snug">주말 외식 카드로 결제했다면<br/>이번 달 <span className="font-bold text-orange-600">약 25,000원</span>을 아낄 수 있었어요.</span>
       </div>
     </div>
   );
 
   const renderStockAnalysis = () => (
-    <div className="w-full flex flex-col gap-4">
-      <div className="bg-white rounded-[24px] p-5 border border-gray-100 shadow-sm flex flex-col gap-5">
+    <div className="w-full flex flex-col gap-3">
+      <div className="bg-white rounded-[12px] p-3.5 border border-gray-100 shadow-sm flex flex-col gap-3">
         <div className="flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-[13px]">NVDA</div>
-            <span className="font-bold text-[#111] text-[18px]">NVIDIA</span>
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-[11px]">NVDA</div>
+            <span className="font-bold text-[#111] text-[15px]">NVIDIA</span>
           </div>
           <div className="flex flex-col items-end">
-            <span className="font-black text-[#111] text-[18px]">$145.20</span>
-            <span className="text-[14px] font-bold text-red-500 mt-0.5">+4.1%</span>
+            <span className="font-black text-[#111] text-[16px]">$145.20</span>
+            <span className="text-[12px] font-bold text-red-500">+4.1%</span>
           </div>
         </div>
         
-        <div className="flex gap-3">
-            <div className="flex-1 bg-gray-50 rounded-[16px] p-4 flex flex-col gap-1 items-center justify-center border border-gray-100">
-              <span className="text-[12px] text-gray-500 font-bold mb-1">기존 목표가</span>
-              <span className="text-[16px] font-bold text-gray-400 line-through decoration-1">$185</span>
+        <div className="flex gap-2">
+            <div className="flex-1 bg-gray-50 rounded-[8px] py-2 flex flex-col gap-0.5 items-center justify-center border border-gray-100">
+              <span className="text-[11px] text-gray-500 font-bold">기존 목표가</span>
+              <span className="text-[14px] font-bold text-gray-400 line-through decoration-1">$185</span>
             </div>
             <div className="flex items-center text-gray-300 font-bold">
-              <ChevronRight className="w-5 h-5" />
+              <ChevronRight className="w-4 h-4" />
             </div>
-            <div className="flex-1 bg-purple-50 rounded-[16px] p-4 flex flex-col gap-1 items-center justify-center border border-purple-200">
-              <span className="text-[12px] text-purple-600 font-bold mb-1">신규 목표가</span>
-              <span className="text-[20px] font-black text-purple-700 leading-none">$202</span>
+            <div className="flex-1 bg-purple-50 rounded-[8px] py-2 flex flex-col gap-0.5 items-center justify-center border border-purple-200">
+              <span className="text-[11px] text-purple-600 font-bold">신규 목표가</span>
+              <span className="text-[16px] font-black text-purple-700 leading-none">$202</span>
             </div>
         </div>
 
-        <div className="flex flex-col gap-3 mt-2">
-          <span className="text-[14px] text-gray-600 font-bold">월가 애널리스트 투자의견 (최근 7곳)</span>
-          <div className="w-full h-2.5 bg-gray-100 rounded-full flex overflow-hidden">
+        <div className="flex flex-col gap-2 mt-1">
+          <span className="text-[12px] text-gray-600 font-bold">월가 애널리스트 투자의견 (최근 7곳)</span>
+          <div className="w-full h-2 bg-gray-100 rounded-full flex overflow-hidden">
             <div className="h-full bg-red-500 w-[100%]"></div>
           </div>
-          <div className="flex justify-between text-[12px] font-medium text-gray-400 px-1">
+          <div className="flex justify-between text-[11px] font-medium text-gray-400 px-1">
             <span className="text-red-500 font-bold">BUY (7)</span>
             <span>HOLD (0)</span>
             <span>SELL (0)</span>
@@ -366,25 +354,24 @@ export default function AIAgentScreen({ context, onClose, onNavigate }: AIAgentS
           </button>
         </header>
 
-        <div className="flex-1 overflow-y-auto px-5 py-6 flex flex-col gap-6 scrollbar-hide">
+        <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3 scrollbar-hide">
           {card && (
-            <div className="w-full">
-              <div className="bg-white rounded-[20px] p-4 shadow-sm border border-gray-100 flex flex-col gap-2 relative overflow-hidden">
-                 <div className="absolute top-0 left-0 w-1 h-full bg-[#111]"></div>
-                 <span className="text-[14px] font-bold text-[#111]">{card.title.replace('\n', ' ')}</span>
+            <div className="w-full mb-2">
+              <div className="bg-white rounded-[12px] px-4 py-3 shadow-sm border border-gray-100 flex flex-col gap-1">
+                 <span className="text-[13px] font-bold text-gray-500">{card.title.replace('\n', ' ')}</span>
                  {card.keyData && card.keyData[0] && (
-                   <div className="flex items-center gap-2">
+                   <div className="flex items-center gap-1.5">
                      {card.keyData[0].from && card.keyData[0].to ? (
                         <>
                           <span className="text-[14px] font-bold text-gray-400 line-through">{card.keyData[0].from}</span>
                           <span className="text-gray-300 font-bold">→</span>
-                          <span className="text-[18px] font-black text-[#111]">{card.keyData[0].to}</span>
+                          <span className="text-[16px] font-black text-[#111]">{card.keyData[0].to}</span>
                         </>
                      ) : (
-                        <span className="text-[18px] font-black text-[#2B5DF9]">{card.keyData[0].highlight}</span>
+                        <span className="text-[16px] font-black text-[#2B5DF9]">{card.keyData[0].highlight}</span>
                      )}
                      {card.keyData[0].diff && (
-                        <span className="text-[14px] font-bold text-red-500">{card.keyData[0].diff}</span>
+                        <span className="text-[13px] font-bold text-red-500">{card.keyData[0].diff}</span>
                      )}
                    </div>
                  )}
@@ -396,57 +383,55 @@ export default function AIAgentScreen({ context, onClose, onNavigate }: AIAgentS
             <div key={msg.id} className={cn("flex flex-col w-full", msg.role === 'user' ? "items-end" : "items-start")}>
               {msg.text && (
                 <div className={cn(
-                  "px-5 py-4 text-[15px] leading-relaxed max-w-[85%]",
+                  "text-[14px] leading-relaxed",
                   msg.role === 'user' 
-                    ? "bg-[#111] text-white rounded-[24px] rounded-tr-[4px]"
-                    : "bg-white text-[#111] border border-gray-100 rounded-[24px] rounded-tl-[4px] shadow-sm"
+                    ? "px-4 py-2.5 max-w-[80%] bg-[#111] text-white rounded-[16px] rounded-tr-[4px]"
+                    : "w-full text-[#111] font-medium"
                 )}>
-                  <span className="whitespace-pre-wrap font-medium">{msg.text}</span>
+                  <span className="whitespace-pre-wrap">{msg.text}</span>
                 </div>
               )}
               
               {msg.customUi === 'deposit_comparison' && (
-                <div className="w-full max-w-[95%] mt-2 mb-1">
+                <div className="w-full mt-2 mb-1">
                   {renderDepositComparison()}
                 </div>
               )}
 
               {msg.customUi === 'spending_analysis' && (
-                <div className="w-full max-w-[95%] mt-2 mb-1">
+                <div className="w-full mt-2 mb-1">
                   {renderSpendingAnalysis()}
                 </div>
               )}
 
               {msg.customUi === 'stock_analysis' && (
-                <div className="w-full max-w-[95%] mt-2 mb-1">
+                <div className="w-full mt-2 mb-1">
                   {renderStockAnalysis()}
                 </div>
               )}
 
               {msg.quickActions && (
-                <div className="mt-4 flex flex-wrap gap-2 w-full max-w-[90%]">
-                  {msg.quickActions.map((qa, i) => {
-                    if (qa.type === 'link') {
-                      return (
-                        <button 
-                          key={i}
-                          onClick={qa.action}
-                          className="w-full py-4 bg-[#111] text-white text-[15px] font-bold rounded-[20px] flex justify-center items-center gap-1.5 mt-2 hover:bg-black/90 transition-colors shadow-sm"
-                        >
-                          {qa.label}
-                        </button>
-                      );
-                    }
-                    return (
+                <div className="mt-2 flex flex-col gap-1 w-full">
+                  <div className="flex flex-wrap gap-1.5">
+                    {msg.quickActions.filter(qa => qa.type !== 'link').map((qa, i) => (
                       <button 
                         key={i}
                         onClick={qa.action}
-                        className="px-4 py-2.5 bg-white border border-[#2B5DF9]/30 text-[#2B5DF9] text-[14px] font-bold rounded-full shadow-sm hover:bg-[#F0F5FF] transition-colors text-left"
+                        className="px-2.5 py-1.5 bg-gray-50 border border-gray-200 text-gray-700 text-[12px] font-bold rounded-[8px] hover:bg-gray-100 transition-colors"
                       >
                         {qa.label}
                       </button>
-                    );
-                  })}
+                    ))}
+                  </div>
+                  {msg.quickActions.filter(qa => qa.type === 'link').map((qa, i) => (
+                    <button 
+                      key={i}
+                      onClick={qa.action}
+                      className="w-full py-2 text-center text-[13px] text-gray-500 font-bold mt-1 flex items-center justify-center gap-1"
+                    >
+                      {qa.label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
