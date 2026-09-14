@@ -61,29 +61,29 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
           </div>
         </header>
 
-        <div className="px-6 flex flex-col gap-8 mt-2">
+        <div className="px-4 flex flex-col gap-6 mt-1 md:px-6 md:gap-7">
           {/* Title & Summary */}
-          <section>
-            <h1 className="text-[26px] font-bold text-[#111] leading-tight mb-6 whitespace-pre-line">
+          <section className="flex flex-col gap-3">
+            <h1 className="text-[22px] font-bold text-[#111] leading-tight whitespace-pre-line">
               {card.title.replace('\n', ' ')}
             </h1>
             
             {card.keyData && card.keyData[0] && (
-              <div className="bg-gray-50/80 rounded-[20px] p-6 flex flex-col gap-2">
-                <span className="text-[14px] text-gray-500 font-medium">요약 수치</span>
-                <div className="flex items-end gap-3 flex-wrap">
+              <div className="bg-gray-50 rounded-[16px] p-4 flex flex-col gap-1 border border-gray-100">
+                <span className="text-[12px] text-gray-500 font-bold">{card.keyData[0].label || '핵심 요약'}</span>
+                <div className="flex items-baseline gap-2">
                   {card.keyData[0].from && card.keyData[0].to ? (
                     <>
-                      <span className="text-[22px] font-bold text-gray-400 line-through decoration-1">{card.keyData[0].from}</span>
-                      <span className="text-gray-300 font-bold mb-1">→</span>
-                      <span className="text-[32px] font-black text-[#111] tracking-tight leading-none">{card.keyData[0].to}</span>
+                      <span className="text-[16px] font-bold text-gray-400 line-through decoration-1">{card.keyData[0].from}</span>
+                      <span className="text-gray-300 font-bold">→</span>
+                      <span className="text-[24px] font-black text-[#111] tracking-tight">{card.keyData[0].to}</span>
                     </>
                   ) : (
-                    <span className="text-[32px] font-black text-[#2B5DF9] tracking-tight leading-none">{card.keyData[0].highlight}</span>
+                    <span className="text-[24px] font-black text-[#2B5DF9] tracking-tight">{card.keyData[0].highlight}</span>
                   )}
                   
                   {card.keyData[0].diff && (
-                    <span className="text-[18px] font-bold text-red-500 mb-1 ml-1">{card.keyData[0].diff}</span>
+                    <span className="text-[15px] font-bold text-red-500 ml-1">{card.keyData[0].diff}</span>
                   )}
                 </div>
               </div>
@@ -92,15 +92,12 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
 
           {/* AI Expanded Insight */}
           <section>
-            <div className="bg-[#F0F5FF] rounded-[24px] p-6 relative overflow-hidden">
-              <div className="absolute -top-6 -right-6 opacity-10">
-                <Sparkles className="w-32 h-32 text-[#2B5DF9]" />
+            <div className="bg-[#F0F5FF] rounded-[16px] p-4 flex flex-col gap-2 border border-[#2B5DF9]/10">
+              <div className="flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-[#2B5DF9]" />
+                <span className="text-[13px] font-bold text-[#2B5DF9]">AI 요약</span>
               </div>
-              <div className="flex items-center gap-2 mb-3 relative z-10">
-                <Sparkles className="w-5 h-5 text-[#2B5DF9]" />
-                <span className="text-[15px] font-bold text-[#2B5DF9]">AI 요약 분석</span>
-              </div>
-              <p className="text-[15px] text-[#111] font-medium leading-relaxed whitespace-pre-line relative z-10">
+              <p className="text-[14px] text-[#111] font-medium leading-snug line-clamp-3">
                 {card.expandedAiInsight || card.aiInsight}
               </p>
             </div>
@@ -108,27 +105,28 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
 
           {/* Detailed Data */}
           {(card.detailList || card.detailPoints) && (
-            <section>
-              <h3 className="text-[18px] font-bold text-[#111] mb-4">상세 데이터</h3>
+            <section className="flex flex-col gap-2">
+              <h3 className="text-[15px] font-bold text-[#111] mb-1">상세 데이터</h3>
               <div className="flex flex-col">
                 {card.detailList?.map((item, idx) => (
-                  <div key={idx} className="flex justify-between items-center py-4 border-b border-gray-100 last:border-0">
-                    <span className="text-[15px] text-gray-600 font-medium">{item.label}</span>
-                    <span className={cn("text-[16px] font-bold", item.highlight ? "text-[#2B5DF9]" : "text-[#111]")}>
+                  <div key={idx} className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0 min-h-[44px]">
+                    <span className="text-[14px] text-gray-600 font-medium">{item.label}</span>
+                    <span className={cn("text-[14px] font-bold", item.highlight ? "text-[#2B5DF9]" : "text-[#111]")}>
                       {item.value}
                     </span>
                   </div>
                 ))}
                 
                 {card.detailPoints && (
-                  <div className="mt-4 flex flex-col gap-3">
-                    <span className="text-[15px] text-gray-600 font-medium mb-1">주요 포인트</span>
-                    {card.detailPoints.map((point, idx) => (
-                      <div key={idx} className="flex items-start gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-[#2B5DF9] mt-2 shrink-0" />
-                        <span className="text-[15px] text-[#111] font-medium leading-snug">{point}</span>
-                      </div>
-                    ))}
+                  <div className="mt-4 flex flex-col gap-2">
+                    <span className="text-[13px] text-gray-500 font-bold mb-1">주요 포인트</span>
+                    <div className="flex flex-wrap gap-2">
+                      {card.detailPoints.map((point, idx) => (
+                        <span key={idx} className="px-2.5 py-1.5 bg-gray-100 text-[#111] text-[13px] font-medium rounded-[8px]">
+                          {point}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -137,40 +135,38 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
 
           {/* AI Continuation Area */}
           {card.aiContinuationTitle && (
-            <section className="mt-4 mb-6">
-              <div className="bg-gradient-to-b from-[#F0F5FF] to-white border border-[#2B5DF9]/20 rounded-[28px] p-6 shadow-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-5 h-5 text-[#2B5DF9]" />
-                  <h3 className="text-[18px] font-bold text-[#111] leading-tight whitespace-pre-line">{card.aiContinuationTitle}</h3>
+            <section className="mt-2 mb-4">
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-1.5 mb-1">
+                  <Sparkles className="w-4.5 h-4.5 text-[#2B5DF9]" />
+                  <span className="text-[15px] font-bold text-[#111]">AI가 더 분석할 수 있어요</span>
                 </div>
-                <p className="text-[14px] text-gray-600 font-medium leading-relaxed mb-5">
-                  {card.aiContinuationDesc}
-                </p>
 
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {card.aiRecommendedQuestions?.map((q, idx) => (
-                    <div key={idx} className="px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[13px] text-gray-600 font-bold shadow-sm">
+                <div className="flex flex-wrap gap-2 mb-1">
+                  {card.aiRecommendedQuestions?.slice(0, 2).map((q, idx) => (
+                    <div key={idx} className="px-3 py-2 bg-white border border-gray-200 rounded-[12px] text-[13px] text-gray-600 font-bold shadow-sm">
                       {q}
                     </div>
                   ))}
                 </div>
 
-                <button 
-                  onClick={() => handleAction(card.actionId!)}
-                  className="w-full py-4 rounded-[20px] bg-[#111] text-white text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors shadow-md"
-                >
-                  <Sparkles className="w-5 h-5 text-yellow-300" />
-                  {card.aiCtaText}
-                </button>
-
-                {card.secondaryCtaText && (
+                <div className="flex flex-col gap-2">
                   <button 
-                    onClick={() => onNavigate('products')}
-                    className="w-full mt-3 py-4 rounded-[20px] bg-white text-gray-700 text-[16px] font-bold border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors shadow-sm"
+                    onClick={() => handleAction(card.actionId!)}
+                    className="w-full h-12 rounded-[16px] bg-[#111] text-white text-[15px] font-bold flex items-center justify-center shadow-md"
                   >
-                    {card.secondaryCtaText}
+                    {card.aiCtaText}
                   </button>
-                )}
+
+                  {card.secondaryCtaText && (
+                    <button 
+                      onClick={() => onNavigate('products')}
+                      className="w-full py-2.5 text-[13px] text-gray-500 font-bold underline underline-offset-2 decoration-gray-300 text-center"
+                    >
+                      {card.secondaryCtaText}
+                    </button>
+                  )}
+                </div>
               </div>
             </section>
           )}
