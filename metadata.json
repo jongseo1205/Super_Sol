@@ -1,0 +1,8 @@
+{
+  "name": "Personal Financial Agent",
+  "description": "A prototype extending Shinhan Super SOL with a personalized, context-aware AI financial agent.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
