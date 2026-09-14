@@ -20,10 +20,17 @@ export const INSIGHT_CARDS: InsightCardData[] = [
       { label: '현재 상품 금리', value: '연 3.1%' },
       { label: '유사 상품 최고 금리', value: '연 3.4%', highlight: true }
     ],
-    detailActions: [
-      { label: '내 돈 운용 살펴보기', type: 'primary', actionId: 'view_products' },
-      { label: 'AI에게 맞춤 상품 묻기', type: 'ai', actionId: 'ask_ai' }
+    aiContinuationTitle: 'AI가 만기자금 운용안을 먼저 비교해드릴게요',
+    aiContinuationDesc: '현재 상품과 비슷한 조건의 예금상품을 먼저 비교하고, 내 상황에 맞는 선택지를 정리해드릴 수 있어요.',
+    aiRecommendedQuestions: [
+      '지금 나에게 맞는 예금은 뭐야?',
+      '6개월과 12개월 중 뭐가 나을까?',
+      '3,000만원 넣으면 이자가 얼마나 차이나?',
+      '금리 높은 상품부터 보여줘'
     ],
+    aiCtaText: 'AI가 예금 3개 먼저 비교해주기',
+    secondaryCtaText: '더 많은 상품 보기',
+    actionId: 'agent_deposit',
     ctaText: '내 돈 운용 살펴보기',
     priority: 1,
   },
@@ -45,11 +52,16 @@ export const INSIGHT_CARDS: InsightCardData[] = [
       { label: '지난달 대비 증가율', value: '+69%' },
       { label: '주요 업종', value: '음식점 / 카페' }
     ],
-    detailActions: [
-      { label: '소비 내역 자세히 보기', type: 'primary', actionId: 'view_finance' },
-      { label: '절약 팁 보기', type: 'secondary', actionId: 'view_tips' },
-      { label: 'AI에게 내 소비 패턴 물어보기', type: 'ai', actionId: 'ask_ai' }
+    aiContinuationTitle: 'AI가 소비 증가 원인을 더 분석해드릴게요',
+    aiContinuationDesc: '지금 보고 있는 외식비 증가, 요일별 특징, 업종 정보를 바탕으로 소비 패턴을 더 자세히 분석할 수 있어요.',
+    aiRecommendedQuestions: [
+      '어디에서 가장 많이 썼어?',
+      '지난 3개월과 비교하면 어때?',
+      '줄일 수 있는 소비는 뭐야?',
+      '다음 달 예산은 어떻게 잡는 게 좋아?'
     ],
+    aiCtaText: 'AI가 내 소비 패턴 분석하기',
+    actionId: 'agent_spending',
     ctaText: '소비 내역 보기',
     priority: 2,
   },
@@ -75,11 +87,16 @@ export const INSIGHT_CARDS: InsightCardData[] = [
       '가이던스 상향',
       'AI 수요 지속 기대'
     ],
-    detailActions: [
-      { label: 'AI에게 이유 더 물어보기', type: 'ai', actionId: 'ask_ai' },
-      { label: '최근 리포트 보기', type: 'secondary', actionId: 'view_report' },
-      { label: '주문 화면으로 이동', type: 'primary', actionId: 'view_stocks' }
+    aiContinuationTitle: 'AI가 이어서 분석해드릴게요',
+    aiContinuationDesc: '지금 보고 있는 목표주가 상향, 컨센서스, 실적 반응을 바탕으로 왜 이런 변화가 생겼는지 더 설명할 수 있어요.',
+    aiRecommendedQuestions: [
+      '왜 목표주가가 올랐나요?',
+      '실적이 얼마나 좋았나요?',
+      '지금 주가에 이미 반영됐나요?',
+      '주문 전 체크할 점은 뭐예요?'
     ],
+    aiCtaText: 'AI와 이어서 보기',
+    actionId: 'agent_stock',
     ctaText: 'AI에게 이유 물어보기',
     priority: 3,
   }

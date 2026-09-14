@@ -25,7 +25,9 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
   if (!card) return null;
 
   const handleAction = (actionId: string) => {
-    if (actionId === 'ask_ai') {
+    if (actionId.startsWith('agent_')) {
+      onOpenAI({ type: 'card', cardId, query: actionId });
+    } else if (actionId === 'ask_ai') {
       onOpenAI({ type: 'card', cardId });
     } else if (actionId === 'view_products') {
       onNavigate('products');
@@ -34,7 +36,6 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
     } else if (actionId === 'view_stocks') {
       onNavigate('stocks');
     }
-    // other generic actions could be mapped here
   };
 
   return (
@@ -134,43 +135,43 @@ export default function InsightDetailScreen({ cardId, onBack, onNavigate, onOpen
             </section>
           )}
 
-          {/* Actions */}
-          {card.detailActions && (
-            <section className="mt-4 flex flex-col gap-3">
-              {card.detailActions.map((action, idx) => {
-                if (action.type === 'ai') {
-                  return (
-                    <button 
-                      key={idx}
-                      onClick={() => handleAction(action.actionId)}
-                      className="w-full py-4 rounded-[16px] bg-[#111] text-white text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors"
-                    >
-                      <Sparkles className="w-5 h-5 text-yellow-300" />
-                      {action.label}
-                    </button>
-                  );
-                }
-                if (action.type === 'primary') {
-                  return (
-                    <button 
-                      key={idx}
-                      onClick={() => handleAction(action.actionId)}
-                      className="w-full py-4 rounded-[16px] bg-[#2B5DF9] text-white text-[16px] font-bold flex items-center justify-center hover:bg-[#2B5DF9]/90 transition-colors"
-                    >
-                      {action.label}
-                    </button>
-                  );
-                }
-                return (
+          {/* AI Continuation Area */}
+          {card.aiContinuationTitle && (
+            <section className="mt-4 mb-6">
+              <div className="bg-gradient-to-b from-[#F0F5FF] to-white border border-[#2B5DF9]/20 rounded-[28px] p-6 shadow-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="w-5 h-5 text-[#2B5DF9]" />
+                  <h3 className="text-[18px] font-bold text-[#111] leading-tight whitespace-pre-line">{card.aiContinuationTitle}</h3>
+                </div>
+                <p className="text-[14px] text-gray-600 font-medium leading-relaxed mb-5">
+                  {card.aiContinuationDesc}
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {card.aiRecommendedQuestions?.map((q, idx) => (
+                    <div key={idx} className="px-3.5 py-2 bg-white border border-gray-200 rounded-full text-[13px] text-gray-600 font-bold shadow-sm">
+                      {q}
+                    </div>
+                  ))}
+                </div>
+
+                <button 
+                  onClick={() => handleAction(card.actionId!)}
+                  className="w-full py-4 rounded-[20px] bg-[#111] text-white text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-black/90 transition-colors shadow-md"
+                >
+                  <Sparkles className="w-5 h-5 text-yellow-300" />
+                  {card.aiCtaText}
+                </button>
+
+                {card.secondaryCtaText && (
                   <button 
-                    key={idx}
-                    onClick={() => handleAction(action.actionId)}
-                    className="w-full py-4 rounded-[16px] bg-gray-50 text-gray-700 text-[16px] font-bold border border-gray-200 flex items-center justify-center hover:bg-gray-100 transition-colors"
+                    onClick={() => onNavigate('products')}
+                    className="w-full mt-3 py-4 rounded-[20px] bg-white text-gray-700 text-[16px] font-bold border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors shadow-sm"
                   >
-                    {action.label}
+                    {card.secondaryCtaText}
                   </button>
-                );
-              })}
+                )}
+              </div>
             </section>
           )}
         </div>

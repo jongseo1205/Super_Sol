@@ -34,7 +34,12 @@ export interface InsightCardData {
   expandedAiInsight?: string;
   detailList?: DetailItem[];
   detailPoints?: string[];
-  detailActions?: ActionItem[];
+  aiContinuationTitle?: string;
+  aiContinuationDesc?: string;
+  aiRecommendedQuestions?: string[];
+  aiCtaText?: string;
+  secondaryCtaText?: string;
+  actionId?: string;
   ctaText: string;
   priority: number;
 }
